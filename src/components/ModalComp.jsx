@@ -28,6 +28,7 @@ const ModalComp = () => {
                 lastname: "",
                 dni: "",
                 type: "",
+                mat: "",
               }}
               onSubmit={(values) => console.log(values)}
             >
@@ -76,10 +77,10 @@ const ModalComp = () => {
                       className="mb-3 mt-3"
                     />
                   </div>
-                  <Form.Group className="mb-3" controlId="roleId">
+                  <Form.Group className="mb-3" controlId="teacherId">
                     <Form.Label>Tipo de docente</Form.Label>
                     <InputGroup className="mb-3">
-                      <InputGroup.Text id="groupRole">
+                      <InputGroup.Text id="groupTeacher">
                         <i className="bi bi-person-fill-gear"></i>
                       </InputGroup.Text>
                       <Form.Select name="type" onChange={handleChange}>
@@ -101,7 +102,7 @@ const ModalComp = () => {
                             type="checkbox"
                             id="check1"
                             label="1er Año"
-                            className="mb-3 mt-3"
+                            className="mb-3"
                           />
                         </Col>
                         <Col lg={6} md={6} sm={6}>
@@ -109,7 +110,7 @@ const ModalComp = () => {
                             type="checkbox"
                             id="check2"
                             label="2do Año"
-                            className="mb-3 mt-3"
+                            className="mb-3"
                           />
                         </Col>
                         <Col lg={6} md={6} sm={6}>
@@ -117,7 +118,7 @@ const ModalComp = () => {
                             type="checkbox"
                             id="check3"
                             label="3er Año"
-                            className="mb-3 mt-3"
+                            className="mb-3"
                           />
                         </Col>
                         <Col lg={6} md={6} sm={6}>
@@ -125,7 +126,7 @@ const ModalComp = () => {
                             type="checkbox"
                             id="check4"
                             label="4to Año"
-                            className="mb-3 mt-3"
+                            className="mb-3"
                           />
                         </Col>
                         <Col lg={6} md={6} sm={6}>
@@ -133,7 +134,7 @@ const ModalComp = () => {
                             type="checkbox"
                             id="check5"
                             label="5to Año"
-                            className="mb-3 mt-3"
+                            className="mb-3"
                           />
                         </Col>
                         <Col lg={6} md={6} sm={6}>
@@ -141,28 +142,87 @@ const ModalComp = () => {
                             type="checkbox"
                             id="check6"
                             label="6to Año"
-                            className="mb-3 mt-3"
+                            className="mb-3"
                           />
                         </Col>
                       </Row>
                     </>
                   ) : values.type === "materia" ? (
                     <Form.Group className="mb-3" controlId="matId">
-                      <Form.Label>Materias y cursos del docente</Form.Label>
+                      <Form.Label>Materia que da el docente</Form.Label>
                       <InputGroup className="mb-3">
                         <InputGroup.Text id="groupMat">
-                          <i className="bi bi-clipboard"></i>
+                        <i className="bi bi-clipboard"></i>
                         </InputGroup.Text>
-                        <Form.Control
-                          placeholder="Materia - Curso"
-                          as={"textarea"}
-                          rows={3}
-                          name="mat"
-                        />
+                        <Form.Select name="mat" onChange={handleChange}>
+                          <option value="">Materia no seleccionada</option>
+                          <option value="Matemática">Matemática</option>
+                          <option value="Lengua">Lengua</option>
+                          <option value="Biología">Biología</option>
+                          <option value="Física">Física</option>
+                          <option value="Tecnología">Tecnología</option>
+                          <option value="Geografía">Geografía</option>
+                        </Form.Select>
                       </InputGroup>
                     </Form.Group>
                   ) : (
                     ""
+                  )}
+                  {values.type === "materia" && values.mat && (
+                    <>
+                      <h5>Cursos donde el docente da la materia</h5>
+                      <hr />
+                      <Row>
+                        <Col lg={6} md={6} sm={6}>
+                          <Form.Check
+                            type="checkbox"
+                            id="check1"
+                            label="1er Año"
+                            className="mb-3"
+                          />
+                        </Col>
+                        <Col lg={6} md={6} sm={6}>
+                          <Form.Check
+                            type="checkbox"
+                            id="check2"
+                            label="2do Año"
+                            className="mb-3"
+                          />
+                        </Col>
+                        <Col lg={6} md={6} sm={6}>
+                          <Form.Check
+                            type="checkbox"
+                            id="check3"
+                            label="3er Año"
+                            className="mb-3"
+                          />
+                        </Col>
+                        <Col lg={6} md={6} sm={6}>
+                          <Form.Check
+                            type="checkbox"
+                            id="check4"
+                            label="4to Año"
+                            className="mb-3"
+                          />
+                        </Col>
+                        <Col lg={6} md={6} sm={6}>
+                          <Form.Check
+                            type="checkbox"
+                            id="check5"
+                            label="5to Año"
+                            className="mb-3"
+                          />
+                        </Col>
+                        <Col lg={6} md={6} sm={6}>
+                          <Form.Check
+                            type="checkbox"
+                            id="check6"
+                            label="6to Año"
+                            className="mb-3"
+                          />
+                        </Col>
+                      </Row>
+                    </>
                   )}
                 </Form>
               )}
